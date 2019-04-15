@@ -6,13 +6,55 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Settings</title>
+    {% load custom_filter %}
 </head>
 <body>
-    <p>Something</p>
-{#    <p>{{ settings_LMS }}</p>#}
-{#    <p>{{ settings_CMS }}</p>#}
-{#    {% for item in settings_list %}#}
-{#        <p>{{ item }}</p>#}
-{#    {% endfor %}#}
+<form action="{% url 'base' %}" method="GET">
+    {{ form }}
+    <button type="submit">Send</button>
+</form>
+
+<ul>
+    {% for item_key, item_val in settings_list.items %}
+        <li>{{ item_key }}:
+            {% if item_val.items %}
+                <ul>
+                    {% checktype item_val as check %}
+                    {% if check == True %}
+                        {% for i_key, i_val in item_val.items %}
+                            <li>{{ i_key }}:
+                                {% if i_val.items %}
+                                    <ul>
+                                        {% for j_key, j_val in i_val.items %}
+                                            <li>{{ j_key }}: {{ j_val }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% else %}{{ i_val }}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        {% for i in item_val %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            {% else %}
+                {% checktypelist item_val as check %}
+                {% if check == True %}
+                    <ul id="item_val">
+                        {% for i in item_val %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+
+                {% else %}
+                    {{ item_val }}
+                {% endif %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
 </body>
+
 </html>
