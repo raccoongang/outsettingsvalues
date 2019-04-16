@@ -1,3 +1,6 @@
+"""
+Url setup for out settings values.
+"""
 from django.conf.urls import url
 
 from . import views
