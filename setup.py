@@ -10,8 +10,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
     name="outsettingsvalues",
     version="0.0.1",
-    install_requires=[
-    ],
+    install_requires=[],
     requires=[],
     packages=["outsettingsvalues"],
     description='Some description',

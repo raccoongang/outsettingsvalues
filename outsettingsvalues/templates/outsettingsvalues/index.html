@@ -10,7 +10,8 @@
 </head>
 <body>
 <form action="{% url 'base' %}" method="GET">
-    {{ form }}
+    {#    {{ form }}#}
+    <input type="text" name="setting_name" value="Enter setting name">
     <button type="submit">Send</button>
 </form>
 
@@ -42,9 +43,27 @@
             {% else %}
                 {% checktypelist item_val as check %}
                 {% if check == True %}
-                    <ul id="item_val">
+                    <ul>
                         {% for i in item_val %}
-                            <li>{{ i }}</li>
+                            <li>
+                                {% checktypelist i as checklist %}
+                                {% checktype i as checkdict %}
+                                {% if ckecklist == True %}
+                                    <ul>
+                                        {% for j in i %}
+                                            <li>{{ j }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% elif ckeckdict == True %}
+                                    <ul>
+                                        {% for j_key, j_val in i %}
+                                            <li>{{ j_key }}: {{ j_val }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    {{ i }}
+                                {% endif %}
+                            </li>
                         {% endfor %}
                     </ul>
 
