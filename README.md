@@ -1,13 +1,13 @@
 
-#OUTSETTINGSVALUES [![Build Status](https://travis-ci.org/raccoongang/outsettingsvalues.svg?branch=master.svg?branch=dev_custome)](https://travis-ci.org/raccoongang/outsettingsvalues.svg?branch=master)
+# OUTSETTINGSVALUES [![Build Status](https://travis-ci.org/raccoongang/outsettingsvalues.svg?branch=master.svg?branch=dev_custome)](https://travis-ci.org/raccoongang/outsettingsvalues.svg?branch=master)
 
 This package print django settings from your project.
 
-##Dependencies
+## Dependencies
 
 This tool compartible with Django 1.11.
 
-##Installation
+## Installation
 
 Use command:
 
@@ -22,7 +22,7 @@ Next add 'outsettingsvalues' to INSTALLED_APPS in your settings file and add
     ] 
 to urls.py file in your django project directory. 
 
-##URL
+## URL
 
 This tool can be browsed from the host and port of your project and /settings url. 
 For example http://localhost:18000/settingsvars.
