@@ -1,3 +1,6 @@
+"""
+Setup for configurate package.
+"""
 import os
 
 from setuptools import setup
