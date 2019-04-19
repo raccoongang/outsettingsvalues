@@ -16,7 +16,7 @@ setup(
     install_requires=[],
     requires=[],
     packages=["outsettingsvalues"],
-    description='Some description',
+    description='A simple Django app for display django setttings of current project.',
     long_description=README,
 
 )

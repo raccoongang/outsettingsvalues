@@ -22,10 +22,10 @@ Next add 'outsettingsvalues' to INSTALLED_APPS in your settings file and add
     ] 
 to urls.py file in your django project directory. 
 
-## URL
+## User guide
 
-This tool can be browsed from the host and port of your project and /settings url. 
-For example http://localhost:18000/settingsvars.
+This tool can be browsed from the host and port of your project and "/settings" url. 
+For example http://localhost:18000/settingsvars/.
 
 
 

@@ -1,3 +1,1 @@
-"""
-outsettingsvalues templatetags file.
-"""
+

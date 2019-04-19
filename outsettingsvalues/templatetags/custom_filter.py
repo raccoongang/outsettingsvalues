@@ -7,22 +7,18 @@ register = template.Library()
 
 
 @register.simple_tag
-def checktype(args):
+def checkdict(args):
     """
     Check type of args. Dict or not.
 
-    :param args:
-    :return: True or False
     """
     return isinstance(args, dict)
 
 
 @register.simple_tag
-def checktypelist(args):
+def checklist(args):
     """
     Check type of args. List or Tuple or another.
 
-    :param args:
-    :return: True or False
     """
-    return isinstance(args, list) or (args, tuple) or (args, set)
+    return isinstance(args, list) or isinstance(args, tuple) or isinstance(args, set)
