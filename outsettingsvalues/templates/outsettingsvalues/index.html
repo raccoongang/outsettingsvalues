@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Settings</title>
+    {% load custom_filter %}
+</head>
+<body>
+<form action="{% url 'base' %}" method="GET">
+    <input type="text" name="setting_name" value="Enter setting name">
+    <button type="submit">Send</button>
+</form>
+
+<ul>
+    {% for item_key, item_val in settings_list.items %}
+        <li>{{ item_key }}:
+            {% if item_val.items %}
+                <ul>
+                    {% checkdict item_val as check %}
+                    {% if check %}
+                        {% for i_key, i_val in item_val.items %}
+                            <li>{{ i_key }}:
+                                {% if i_val.items %}
+                                    <ul>
+                                        {% for j_key, j_val in i_val.items %}
+                                            <li>{{ j_key }}:
+                                                {% checklist j_val as checklist %}
+                                                {% checkdict j_val as checkdict %}
+                                                {% if ckecklist %}
+                                                    <ul>
+                                                        {% for j in j_val %}
+                                                            <li>{{ j }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% elif ckeckdict %}
+                                                    <ul>
+                                                        {% for k_key, k_val in j_val %}
+                                                            <li>{{ k_key }}: {{ k_val }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% else %}
+                                                    {{ j_val }}
+                                                {% endif %}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% else %}{{ i_val }}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        {% for i in item_val %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            {% else %}
+                {% checklist item_val as check %}
+                {% if check %}
+                    <ul>
+                        {% for i in item_val %}
+                            {% checklist i as checklist %}
+                            {% checkdict i as checkdict %}
+                            <li>
+                                {% if ckecklist %}
+                                    <ul>
+                                        {% for j in i %}
+                                            <li>{{ j }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% elif ckeckdict %}
+                                    <ul>
+                                        {% for j_key, j_val in i %}
+                                            <li>{{ j_key }}: {{ k_val }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    {{ i }}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                {% else %}
+                    {{ item_val }}
+                {% endif %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+</body>
+
+</html>
